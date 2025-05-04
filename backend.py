@@ -24,9 +24,6 @@ import chromadb
 
 load_dotenv()
 
-credential = DefaultAzureCredential()
-client = SecretClient(vault_url=KVUri, credential=credential)
-
 DB_NAME = os.getenv('PROJ-DB-NAME')
 DB_USER = os.getenv('PROJ-DB-USER')
 DB_PASSWORD = os.getenv('PROJ-DB-PASSWORD')

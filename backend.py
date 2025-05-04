@@ -24,23 +24,19 @@ import chromadb
 
 load_dotenv()
 
-keyVaultName = os.environ["KEY_VAULT_NAME"]
-KVUri = f"https://{keyVaultName}.vault.azure.net"
-
 credential = DefaultAzureCredential()
 client = SecretClient(vault_url=KVUri, credential=credential)
 
-DB_NAME = client.get_secret('PROJ-DB-NAME').value
-DB_USER = client.get_secret('PROJ-DB-USER').value
-DB_PASSWORD = client.get_secret('PROJ-DB-PASSWORD').value
-DB_HOST = client.get_secret('PROJ-DB-HOST').value
-DB_PORT = client.get_secret('PROJ-DB-PORT').value
-OPENAI_API_KEY = client.get_secret('PROJ-OPENAI-API-KEY').value
-AZURE_STORAGE_SAS_URL = client.get_secret('PROJ-AZURE-STORAGE-SAS-URL').value
-AZURE_STORAGE_CONTAINER = client.get_secret('PROJ-AZURE-STORAGE-CONTAINER').value
-CHROMADB_HOST = client.get_secret('PROJ-CHROMADB-HOST').value
-CHROMADB_PORT = client.get_secret('PROJ-CHROMADB-PORT').value
-
+DB_NAME = os.getenv('PROJ-DB-NAME')
+DB_USER = os.getenv('PROJ-DB-USER')
+DB_PASSWORD = os.getenv('PROJ-DB-PASSWORD')
+DB_HOST = os.getenv('PROJ-DB-HOST')
+DB_PORT = os.getenv('PROJ-DB-PORT')
+OPENAI_API_KEY = os.getenv('PROJ-OPENAI-API-KEY')
+AZURE_STORAGE_SAS_URL = os.getenv('PROJ-AZURE-STORAGE-SAS-URL')
+AZURE_STORAGE_CONTAINER = os.getenv('PROJ-AZURE-STORAGE-CONTAINER')
+CHROMADB_HOST = os.getenv('PROJ-CHROMADB-HOST')
+CHROMADB_PORT = os.getenv('PROJ-CHROMADB-PORT')
 
 DB_CONFIG = {
     "dbname": DB_NAME,
